@@ -34,6 +34,12 @@
 		margin: 2rem auto;
 	}
 
+	@media (max-width: 600px) {
+		img {
+			max-height: 200px;
+		}
+	}
+
 	a {
 		display: block;
 		font-size: 1.5rem;
