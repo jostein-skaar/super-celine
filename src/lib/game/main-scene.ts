@@ -60,6 +60,13 @@ export class MainScene extends Phaser.Scene {
 			.setOrigin(0.5, 0);
 
 		this.cursors = this.input.keyboard!.createCursorKeys();
+		this.cursors.space.onDown = () => {
+			this.performJump();
+		};
+		this.input.on('pointerdown', () => {
+			this.performJump();
+		});
+
 		const groundHeight = adjustForPixelRatio(50);
 		const ground = this.add.rectangle(
 			this.scale.width / 2,
@@ -115,7 +122,13 @@ export class MainScene extends Phaser.Scene {
 		}
 	}
 
+	private performJump() {
+		if (this.hero.body.onFloor()) {
+			this.hero.setVelocityY(adjustForPixelRatio(-400));
+		}
+	}
+
 	private lose() {
-		console.log('Game over!');
+		// console.log('Game over!');
 	}
 }
