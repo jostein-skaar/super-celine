@@ -12,32 +12,18 @@
 <style>
 	header {
 		display: flex;
-		justify-content: center;
+		gap: 2rem;
 		align-items: center;
-		height: 100vh;
 		flex-direction: column;
 		max-width: 500px;
 		margin: 0 auto;
 		text-align: center;
+		text-wrap: balance;
 		padding: 1rem;
 	}
 
-	h1 {
-		margin: 0;
-	}
-
-	p {
-		text-wrap: balance;
-	}
-
 	img {
-		margin: 2rem auto;
-	}
-
-	@media (max-width: 600px) {
-		img {
-			max-height: 200px;
-		}
+		height: clamp(100px, 35vh, 350px);
 	}
 
 	a {
