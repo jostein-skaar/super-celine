@@ -45,9 +45,9 @@
 </div>
 
 <style>
-	/* :global(body) {
-		overflow: hidden;
-	} */
+	:global(body) {
+		background-color: #cccaca;
+	}
 
 	.game-container {
 		container-type: size;

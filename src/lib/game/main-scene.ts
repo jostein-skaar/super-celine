@@ -124,10 +124,7 @@ export class MainScene extends Phaser.Scene {
 		}
 
 		this.hero = this.physics.add.sprite(0, 0, 'sprites', 'hero-001.png');
-		this.hero.setPosition(
-			this.scale.width / 4,
-			this.scale.height - this.hero.height / 2 - this.settings.groundHeight
-		);
+		this.resetHeroPosition();
 		this.hero.setGravityY(this.settings.heroGravity);
 		this.hero.setCollideWorldBounds(true);
 		this.hero.anims.create({
@@ -214,6 +211,10 @@ export class MainScene extends Phaser.Scene {
 
 		if (this.health <= 0) {
 			this.lose();
+		}
+
+		if (this.isHeroBelowGround()) {
+			this.resetHeroPosition();
 		}
 	}
 
@@ -347,6 +348,17 @@ export class MainScene extends Phaser.Scene {
 		if (this.hero.body.onFloor()) {
 			this.hero.setVelocityY(-this.settings.jumpVelocity);
 		}
+	}
+
+	private resetHeroPosition() {
+		this.hero.setPosition(
+			this.scale.width / 4,
+			this.scale.height - this.hero.height / 2 - this.settings.groundHeight
+		);
+	}
+
+	private isHeroBelowGround() {
+		return this.hero.y > this.scale.height - this.hero.height / 2 - this.settings.groundHeight;
 	}
 
 	private lose() {
