@@ -33,6 +33,7 @@ export class MainScene extends Phaser.Scene {
 	};
 
 	health = this.settings.healthMax;
+	velocity = this.settings.velocity;
 
 	constructor() {
 		super('main-scene');
@@ -118,7 +119,6 @@ export class MainScene extends Phaser.Scene {
 			);
 			previousX = this.positionObstacle(obstacle, previousX);
 		}
-		// this.obstaclesGroup.setVelocityX(-this.settings.velocity);
 
 		this.hero = this.physics.add.sprite(0, 0, 'sprites', 'hero-001.png');
 		this.hero.setPosition(
@@ -148,11 +148,12 @@ export class MainScene extends Phaser.Scene {
 				yoyo: true,
 				repeat: 10,
 				onActive: () => {
-					console.log('tween active');
 					this.hero.setTint(0xff0000);
+					this.velocity = 0;
 				},
 				onComplete: () => {
 					this.hero.setTint(undefined);
+					this.velocity = this.settings.velocity;
 				}
 			}
 		});
@@ -194,6 +195,8 @@ export class MainScene extends Phaser.Scene {
 	}
 
 	update(): void {
+		this.rewardGroup.setVelocityX(-this.velocity);
+		this.obstaclesGroup.setVelocityX(-this.velocity);
 		this.repositionObstacles();
 		this.repositionRewards();
 		const losingHealth = 2;
@@ -235,7 +238,7 @@ export class MainScene extends Phaser.Scene {
 		);
 		// reward.enableBody(true, x, y, true, true);
 		reward.setPosition(x, y);
-		reward.setVelocityX(-this.settings.velocity);
+		reward.setVelocityX(-this.velocity);
 
 		return x;
 	}
@@ -252,7 +255,7 @@ export class MainScene extends Phaser.Scene {
 			);
 		const y = this.scale.height - obstacle.height / 2 - this.settings.groundHeight;
 		obstacle.setPosition(x, y);
-		obstacle.setVelocityX(-this.settings.velocity);
+		obstacle.setVelocityX(-this.velocity);
 
 		return x;
 	}
