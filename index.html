@@ -2,49 +2,44 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
 			rel="stylesheet"
 		/>
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Super Celine</title>
+		<link rel="preload" as="image" href="loader.svg" />
+
+		<!-- AUTOMATIC REPLACE BEGIN -->
+    <title>Super Celine</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/super-celine-icon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/super-celine-icon-180.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#fbf230" />
+    <!-- AUTOMATIC REPLACE END -->
 		
-		<link href="./_app/immutable/assets/0.BdGfXdL_.css" rel="stylesheet">
-		<link href="./_app/immutable/assets/2.DAFlwqXA.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.BfY2AzIF.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/entry.Bq7MDZC4.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.DffD9_Aw.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/entry.CKy9r23P.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/scheduler.Bmg8oFKD.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.6SpROANq.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.HvHbli7z.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/0.C9uhoqsY.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/2.C3eBGhTI.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.B2tDVUa6.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.Bptp0O1h.js">
 	</head>
 	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">  <header class="svelte-yzrkrx" data-svelte-h="svelte-1mec3ql"><h1 class="svelte-yzrkrx">Super Celine</h1> <p class="svelte-yzrkrx">Assist Celine on the way to her next important meeting!</p> <img src="/_app/immutable/assets/super-celine.CGyBHN3p.png" alt="Drawing of Super Celine" class="svelte-yzrkrx"> <a href="/game" class="svelte-yzrkrx">Start Game</a> </header> 
-			
+		<div style="display: contents">
 			<script>
 				{
-					__sveltekit_1kewfio = {
+					__sveltekit_6w0bh4 = {
 						base: new URL(".", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
-					const data = [null,null];
-
 					Promise.all([
-						import("./_app/immutable/entry/start.BfY2AzIF.js"),
-						import("./_app/immutable/entry/app.6SpROANq.js")
+						import("./_app/immutable/entry/start.DffD9_Aw.js"),
+						import("./_app/immutable/entry/app.B2tDVUa6.js")
 					]).then(([kit, app]) => {
-						kit.start(app, element, {
-							node_ids: [0, 2],
-							data,
-							form: null,
-							error: null
-						});
+						kit.start(app, element);
 					});
 				}
 			</script>
