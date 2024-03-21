@@ -19,6 +19,7 @@ export class MainScene extends Phaser.Scene {
 	rewardGroup!: Phaser.Physics.Arcade.Group;
 	obstaclesGroup!: Phaser.Physics.Arcade.Group;
 	emitter!: GameObjects.Particles.ParticleEmitter;
+	currentHitObstacle?: Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
 
 	settings = {
 		healthMax: 3000,
@@ -34,6 +35,7 @@ export class MainScene extends Phaser.Scene {
 
 	health = this.settings.healthMax;
 	velocity = this.settings.velocity;
+	timeSinceStart = 0;
 
 	constructor() {
 		super('main-scene');
@@ -76,7 +78,7 @@ export class MainScene extends Phaser.Scene {
 			.setDepth(1)
 			.setOrigin(0, 0.5);
 		this.healtBarText = this.add
-			.text(healthBarContainer.x, adjustForPixelRatio(16), 'energy', {
+			.text(healthBarContainer.x, adjustForPixelRatio(16), 'exuberance', {
 				fontSize: `${adjustForPixelRatio(24)}px`,
 				color: '#000'
 			})
@@ -117,6 +119,7 @@ export class MainScene extends Phaser.Scene {
 				'sprites',
 				obstacles[Phaser.Math.Between(0, obstacles.length - 1)]
 			);
+			obstacle.setImmovable(true);
 			previousX = this.positionObstacle(obstacle, previousX);
 		}
 
@@ -149,11 +152,12 @@ export class MainScene extends Phaser.Scene {
 				repeat: 10,
 				onActive: () => {
 					this.hero.setTint(0xff0000);
-					this.velocity = 0;
+					// this.velocity = 0;
 				},
 				onComplete: () => {
 					this.hero.setTint(undefined);
-					this.velocity = this.settings.velocity;
+					this.currentHitObstacle = undefined;
+					// this.velocity = this.settings.velocity;
 				}
 			}
 		});
@@ -175,7 +179,10 @@ export class MainScene extends Phaser.Scene {
 			this.obstaclesGroup,
 			// @ts-expect-error(TODO: Need to find out how to fix this)
 			(_hero, obstacle: Phaser.Types.Physics.Arcade.SpriteWithStaticBody) => {
-				this.positionObstacle(obstacle, this.findFurthestObstacle());
+				if (this.currentHitObstacle === obstacle) {
+					return;
+				}
+				this.currentHitObstacle = obstacle;
 				this.punish();
 			}
 			// // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -194,7 +201,8 @@ export class MainScene extends Phaser.Scene {
 		});
 	}
 
-	update(): void {
+	update(_time: number, delta: number): void {
+		this.timeSinceStart += delta;
 		this.rewardGroup.setVelocityX(-this.velocity);
 		this.obstaclesGroup.setVelocityX(-this.velocity);
 		this.repositionObstacles();
@@ -226,11 +234,13 @@ export class MainScene extends Phaser.Scene {
 		reward: Phaser.Types.Physics.Arcade.SpriteWithStaticBody,
 		previousX: number
 	): number {
+		const extraDistance = this.timeSinceStart / 100;
+
 		const x =
 			previousX +
 			Phaser.Math.Between(
-				this.settings.distanceBetweenRewards[0],
-				this.settings.distanceBetweenRewards[1]
+				this.settings.distanceBetweenRewards[0] + extraDistance,
+				this.settings.distanceBetweenRewards[1] + extraDistance
 			);
 		const y = Phaser.Math.Between(
 			adjustForPixelRatio(100),
@@ -340,6 +350,6 @@ export class MainScene extends Phaser.Scene {
 	}
 
 	private lose() {
-		// console.log('Game over!');
+		window.location.href = '/lose';
 	}
 }
