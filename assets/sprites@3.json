@@ -4,7 +4,7 @@
 			"image": "sprites@3.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1026,
+				"w": 1016,
 				"h": 1024
 			},
 			"scale": 0.75,
@@ -117,21 +117,21 @@
 				{
 					"filename": "obstacles-004.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
 						"w": 300,
 						"h": 420
 					},
 					"spriteSourceSize": {
-						"x": 0,
+						"x": 5,
 						"y": 0,
-						"w": 300,
+						"w": 290,
 						"h": 420
 					},
 					"frame": {
 						"x": 725,
 						"y": 1,
-						"w": 300,
+						"w": 290,
 						"h": 420
 					}
 				},
@@ -246,6 +246,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:5315d541f10d0de07155d163bd0ca960:7ac14c45b25892e59e9cbc7909377772:4a9bf2ba9afc2827dfa178a3fc41fa73$"
+		"smartupdate": "$TexturePacker:SmartUpdate:59e2a6ac7b5133052ab701ad6ad8c978:1a94f303e398f8423d181f0cdd58e8d1:4a9bf2ba9afc2827dfa178a3fc41fa73$"
 	}
 }
