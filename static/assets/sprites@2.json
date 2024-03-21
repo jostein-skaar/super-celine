@@ -5,178 +5,10 @@
 			"format": "RGBA8888",
 			"size": {
 				"w": 242,
-				"h": 1138
+				"h": 2032
 			},
 			"scale": 0.5,
 			"frames": [
-				{
-					"filename": "particle-snowflake-001.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 48,
-						"h": 48
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 48,
-						"h": 48
-					},
-					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 48,
-						"h": 48
-					}
-				},
-				{
-					"filename": "particle-snowflake-002.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 48,
-						"h": 48
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 48,
-						"h": 48
-					},
-					"frame": {
-						"x": 51,
-						"y": 1,
-						"w": 48,
-						"h": 48
-					}
-				},
-				{
-					"filename": "particle-snowflake-003.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 48,
-						"h": 48
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 48,
-						"h": 48
-					},
-					"frame": {
-						"x": 101,
-						"y": 1,
-						"w": 48,
-						"h": 48
-					}
-				},
-				{
-					"filename": "particle-star-001.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 48,
-						"h": 48
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 48,
-						"h": 48
-					},
-					"frame": {
-						"x": 151,
-						"y": 1,
-						"w": 48,
-						"h": 48
-					}
-				},
-				{
-					"filename": "obstacles-001.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 140
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 140
-					},
-					"frame": {
-						"x": 1,
-						"y": 51,
-						"w": 100,
-						"h": 140
-					}
-				},
-				{
-					"filename": "obstacles-002.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 140
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 140
-					},
-					"frame": {
-						"x": 103,
-						"y": 51,
-						"w": 100,
-						"h": 140
-					}
-				},
-				{
-					"filename": "obstacles-003.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 140
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 140
-					},
-					"frame": {
-						"x": 1,
-						"y": 193,
-						"w": 100,
-						"h": 140
-					}
-				},
-				{
-					"filename": "obstacles-004.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 140
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 140
-					},
-					"frame": {
-						"x": 103,
-						"y": 193,
-						"w": 100,
-						"h": 140
-					}
-				},
 				{
 					"filename": "hero-001.png",
 					"rotated": false,
@@ -193,7 +25,7 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 335,
+						"y": 1,
 						"w": 240,
 						"h": 400
 					}
@@ -214,9 +46,198 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 737,
+						"y": 403,
 						"w": 240,
 						"h": 400
+					}
+				},
+				{
+					"filename": "obstacles-001.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 200,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 200,
+						"h": 280
+					},
+					"frame": {
+						"x": 1,
+						"y": 805,
+						"w": 200,
+						"h": 280
+					}
+				},
+				{
+					"filename": "obstacles-002.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 200,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 200,
+						"h": 280
+					},
+					"frame": {
+						"x": 1,
+						"y": 1087,
+						"w": 200,
+						"h": 280
+					}
+				},
+				{
+					"filename": "obstacles-003.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 200,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 200,
+						"h": 280
+					},
+					"frame": {
+						"x": 1,
+						"y": 1369,
+						"w": 200,
+						"h": 280
+					}
+				},
+				{
+					"filename": "obstacles-004.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 199,
+						"h": 280
+					},
+					"frame": {
+						"x": 1,
+						"y": 1651,
+						"w": 199,
+						"h": 280
+					}
+				},
+				{
+					"filename": "rewards-001.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 80,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 80,
+						"h": 80
+					},
+					"frame": {
+						"x": 1,
+						"y": 1933,
+						"w": 80,
+						"h": 80
+					}
+				},
+				{
+					"filename": "particle-snowflake-001.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 48,
+						"h": 48
+					},
+					"frame": {
+						"x": 83,
+						"y": 1933,
+						"w": 48,
+						"h": 48
+					}
+				},
+				{
+					"filename": "particle-snowflake-002.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 48,
+						"h": 48
+					},
+					"frame": {
+						"x": 133,
+						"y": 1933,
+						"w": 48,
+						"h": 48
+					}
+				},
+				{
+					"filename": "particle-snowflake-003.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 48,
+						"h": 48
+					},
+					"frame": {
+						"x": 183,
+						"y": 1933,
+						"w": 48,
+						"h": 48
+					}
+				},
+				{
+					"filename": "particle-star-001.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 48,
+						"h": 48
+					},
+					"frame": {
+						"x": 83,
+						"y": 1983,
+						"w": 48,
+						"h": 48
 					}
 				}
 			]
@@ -225,6 +246,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:7a1b9c9083e6dbaf55678b521b7cdf47:e40c7193f78a6bcb4e3ae3cf113252af:4a9bf2ba9afc2827dfa178a3fc41fa73$"
+		"smartupdate": "$TexturePacker:SmartUpdate:08540e0050f47bf299bc2a2f5057e14c:29a194799a3a8f4544c9d4fc629b3410:4a9bf2ba9afc2827dfa178a3fc41fa73$"
 	}
 }

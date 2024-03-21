@@ -4,8 +4,8 @@
 			"image": "sprites@3.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 362,
-				"h": 1702
+				"w": 1024,
+				"h": 1024
 			},
 			"scale": 0.75,
 			"frames": [
@@ -31,6 +31,48 @@
 					}
 				},
 				{
+					"filename": "obstacles-001.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 300,
+						"h": 420
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 300,
+						"h": 420
+					},
+					"frame": {
+						"x": 1,
+						"y": 603,
+						"w": 300,
+						"h": 420
+					}
+				},
+				{
+					"filename": "obstacles-002.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 300,
+						"h": 420
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 300,
+						"h": 420
+					},
+					"frame": {
+						"x": 303,
+						"y": 603,
+						"w": 300,
+						"h": 420
+					}
+				},
+				{
 					"filename": "hero-002.png",
 					"rotated": false,
 					"trimmed": false,
@@ -45,52 +87,10 @@
 						"h": 600
 					},
 					"frame": {
-						"x": 1,
-						"y": 603,
+						"x": 363,
+						"y": 1,
 						"w": 360,
 						"h": 600
-					}
-				},
-				{
-					"filename": "obstacles-001.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 150,
-						"h": 210
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 150,
-						"h": 210
-					},
-					"frame": {
-						"x": 1,
-						"y": 1205,
-						"w": 150,
-						"h": 210
-					}
-				},
-				{
-					"filename": "obstacles-002.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 150,
-						"h": 210
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 150,
-						"h": 210
-					},
-					"frame": {
-						"x": 153,
-						"y": 1205,
-						"w": 150,
-						"h": 210
 					}
 				},
 				{
@@ -98,41 +98,62 @@
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 150,
-						"h": 210
+						"w": 300,
+						"h": 420
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 150,
-						"h": 210
+						"w": 300,
+						"h": 420
 					},
 					"frame": {
-						"x": 1,
-						"y": 1417,
-						"w": 150,
-						"h": 210
+						"x": 605,
+						"y": 603,
+						"w": 300,
+						"h": 420
 					}
 				},
 				{
 					"filename": "obstacles-004.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
-						"w": 150,
-						"h": 210
+						"w": 300,
+						"h": 420
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 150,
-						"h": 210
+						"w": 298,
+						"h": 420
 					},
 					"frame": {
-						"x": 153,
-						"y": 1417,
-						"w": 150,
-						"h": 210
+						"x": 725,
+						"y": 1,
+						"w": 298,
+						"h": 420
+					}
+				},
+				{
+					"filename": "rewards-001.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 120,
+						"h": 120
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 120,
+						"h": 120
+					},
+					"frame": {
+						"x": 725,
+						"y": 423,
+						"w": 120,
+						"h": 120
 					}
 				},
 				{
@@ -150,8 +171,8 @@
 						"h": 72
 					},
 					"frame": {
-						"x": 1,
-						"y": 1629,
+						"x": 847,
+						"y": 423,
 						"w": 72,
 						"h": 72
 					}
@@ -171,8 +192,8 @@
 						"h": 72
 					},
 					"frame": {
-						"x": 75,
-						"y": 1629,
+						"x": 847,
+						"y": 497,
 						"w": 72,
 						"h": 72
 					}
@@ -192,8 +213,8 @@
 						"h": 72
 					},
 					"frame": {
-						"x": 149,
-						"y": 1629,
+						"x": 907,
+						"y": 571,
 						"w": 72,
 						"h": 72
 					}
@@ -213,8 +234,8 @@
 						"h": 72
 					},
 					"frame": {
-						"x": 223,
-						"y": 1629,
+						"x": 921,
+						"y": 423,
 						"w": 72,
 						"h": 72
 					}
@@ -225,6 +246,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:7a1b9c9083e6dbaf55678b521b7cdf47:e40c7193f78a6bcb4e3ae3cf113252af:4a9bf2ba9afc2827dfa178a3fc41fa73$"
+		"smartupdate": "$TexturePacker:SmartUpdate:08540e0050f47bf299bc2a2f5057e14c:29a194799a3a8f4544c9d4fc629b3410:4a9bf2ba9afc2827dfa178a3fc41fa73$"
 	}
 }

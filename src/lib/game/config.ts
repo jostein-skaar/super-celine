@@ -3,7 +3,7 @@ import { MainScene } from './main-scene';
 export function createGameConfig(
 	width: number,
 	height: number,
-	scalingModePhaser: Phaser.Scale.ScaleModes,
+	scaleModePhaser: Phaser.Scale.ScaleModes,
 	centerModePhaser: Phaser.Scale.Center,
 	pixelRatio: number,
 	isDebug: boolean
@@ -29,7 +29,7 @@ export function createGameConfig(
 		physics: {
 			default: 'arcade',
 			arcade: {
-				gravity: { x: 0, y: 300 * pixelRatio },
+				gravity: { x: 0, y: 0 * pixelRatio },
 				debug: isDebug
 			}
 		},
@@ -37,7 +37,7 @@ export function createGameConfig(
 		scale: {
 			// Vi har denne som FIT først, for da vil canvas.style.width og .height settes automatisk.
 			// Må fjernes etterpå, ellers vil rare ting skje i forbindelse med resize.
-			mode: scalingModePhaser,
+			mode: scaleModePhaser,
 			autoCenter: centerModePhaser,
 			// mode: Phaser.Scale.ScaleModes.NONE,
 			// mode: Phaser.Scale.ScaleModes.FIT,

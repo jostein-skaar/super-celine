@@ -18,3 +18,7 @@ body {
 a {
 	color: var(--text-color);
 }
+
+canvas {
+	margin: 0 auto;
+}

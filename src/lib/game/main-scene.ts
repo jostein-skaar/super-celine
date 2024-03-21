@@ -1,15 +1,38 @@
 import { adjustForPixelRatio } from '@jostein-skaar/common-game';
 import Phaser, { GameObjects } from 'phaser';
 
+const obstacles = [
+	'obstacles-001.png',
+	'obstacles-002.png',
+	'obstacles-003.png',
+	'obstacles-004.png'
+];
+
 export class MainScene extends Phaser.Scene {
 	width!: number;
 	height!: number;
 	cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
 	hero!: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody;
-	healthMax = 3000;
-	health = this.healthMax;
+	hurtTimeline!: Phaser.Time.Timeline;
 	healthBar!: GameObjects.Rectangle;
 	healtBarText!: GameObjects.Text;
+	rewardGroup!: Phaser.Physics.Arcade.Group;
+	obstaclesGroup!: Phaser.Physics.Arcade.Group;
+	emitter!: GameObjects.Particles.ParticleEmitter;
+
+	settings = {
+		healthMax: 3000,
+		healthForReward: 500,
+		healthForObstacle: -1000,
+		groundHeight: adjustForPixelRatio(50),
+		heroGravity: adjustForPixelRatio(550),
+		jumpVelocity: adjustForPixelRatio(600),
+		velocity: adjustForPixelRatio(200),
+		distanceBetweenObstacles: [adjustForPixelRatio(500), adjustForPixelRatio(700)],
+		distanceBetweenRewards: [adjustForPixelRatio(300), adjustForPixelRatio(500)]
+	};
+
+	health = this.settings.healthMax;
 
 	constructor() {
 		super('main-scene');
@@ -67,22 +90,42 @@ export class MainScene extends Phaser.Scene {
 			this.performJump();
 		});
 
-		const groundHeight = adjustForPixelRatio(50);
 		const ground = this.add.rectangle(
 			this.scale.width / 2,
-			this.scale.height - groundHeight / 2,
+			this.scale.height - this.settings.groundHeight / 2,
 			this.scale.width,
-			groundHeight,
+			this.settings.groundHeight,
 			0x828282
 		);
 		this.physics.add.existing(ground, true);
 
+		this.rewardGroup = this.physics.add.group();
+		let previousRewardX = 0;
+		for (let i = 0; i < 5; i++) {
+			const reward = this.rewardGroup.create(0, 0, 'sprites', 'rewards-001.png');
+			previousRewardX = this.positionReward(reward, previousRewardX);
+		}
+
+		this.obstaclesGroup = this.physics.add.group();
+
+		let previousX = 0;
+		for (let i = 0; i < 2; i++) {
+			const obstacle = this.obstaclesGroup.create(
+				0,
+				0,
+				'sprites',
+				obstacles[Phaser.Math.Between(0, obstacles.length - 1)]
+			);
+			previousX = this.positionObstacle(obstacle, previousX);
+		}
+		// this.obstaclesGroup.setVelocityX(-this.settings.velocity);
+
 		this.hero = this.physics.add.sprite(0, 0, 'sprites', 'hero-001.png');
 		this.hero.setPosition(
-			this.scale.width / 2,
-			this.scale.height - this.hero.height / 2 - groundHeight
+			this.scale.width / 4,
+			this.scale.height - this.hero.height / 2 - this.settings.groundHeight
 		);
-		this.hero.setBounce(0.1);
+		this.hero.setGravityY(this.settings.heroGravity);
 		this.hero.setCollideWorldBounds(true);
 		this.hero.anims.create({
 			key: 'run',
@@ -95,10 +138,64 @@ export class MainScene extends Phaser.Scene {
 		});
 		this.hero.anims.play('run', true);
 
+		this.hurtTimeline = this.add.timeline({
+			at: 0,
+			tween: {
+				targets: this.hero,
+				scale: 0.8,
+				ease: 'Power0',
+				duration: 40,
+				yoyo: true,
+				repeat: 10,
+				onActive: () => {
+					console.log('tween active');
+					this.hero.setTint(0xff0000);
+				},
+				onComplete: () => {
+					this.hero.setTint(undefined);
+				}
+			}
+		});
+
 		this.physics.add.collider(this.hero, ground);
+
+		this.physics.add.overlap(
+			this.hero,
+			this.rewardGroup,
+			// @ts-expect-error(TODO: Need to find out how to fix this)
+			(_hero, reward: Phaser.Types.Physics.Arcade.SpriteWithStaticBody) => {
+				this.collectReward(reward);
+				this.positionReward(reward, this.findFurthestReward());
+			}
+		);
+
+		this.physics.add.overlap(
+			this.hero,
+			this.obstaclesGroup,
+			// @ts-expect-error(TODO: Need to find out how to fix this)
+			(_hero, obstacle: Phaser.Types.Physics.Arcade.SpriteWithStaticBody) => {
+				this.positionObstacle(obstacle, this.findFurthestObstacle());
+				this.punish();
+			}
+			// // eslint-disable-next-line @typescript-eslint/no-unused-vars
+			// (_hero, _reward) => {
+			// 	this.punish();
+			// }
+		);
+
+		this.emitter = this.add.particles(0, 0, 'sprites', {
+			frame: 'particle-star-001.png',
+			scale: { start: 1, end: 0 },
+			speed: { min: 10, max: 100 },
+			lifespan: 800,
+			quantity: 20,
+			active: false
+		});
 	}
 
 	update(): void {
+		this.repositionObstacles();
+		this.repositionRewards();
 		const losingHealth = 2;
 
 		this.health -= losingHealth;
@@ -110,7 +207,7 @@ export class MainScene extends Phaser.Scene {
 	}
 
 	private drawHealthBar() {
-		const percent = Math.max(Math.min(this.health / this.healthMax, 1), 0);
+		const percent = Math.max(Math.min(this.health / this.settings.healthMax, 1), 0);
 		this.healthBar.setScale(percent, 1);
 
 		if (percent < 0.2) {
@@ -122,9 +219,120 @@ export class MainScene extends Phaser.Scene {
 		}
 	}
 
+	private positionReward(
+		reward: Phaser.Types.Physics.Arcade.SpriteWithStaticBody,
+		previousX: number
+	): number {
+		const x =
+			previousX +
+			Phaser.Math.Between(
+				this.settings.distanceBetweenRewards[0],
+				this.settings.distanceBetweenRewards[1]
+			);
+		const y = Phaser.Math.Between(
+			adjustForPixelRatio(100),
+			this.scale.height - reward.height / 2 - this.settings.groundHeight - adjustForPixelRatio(100)
+		);
+		// reward.enableBody(true, x, y, true, true);
+		reward.setPosition(x, y);
+		reward.setVelocityX(-this.settings.velocity);
+
+		return x;
+	}
+
+	private positionObstacle(
+		obstacle: Phaser.Types.Physics.Arcade.SpriteWithStaticBody,
+		previousX: number
+	): number {
+		const x =
+			previousX +
+			Phaser.Math.Between(
+				this.settings.distanceBetweenObstacles[0],
+				this.settings.distanceBetweenObstacles[1]
+			);
+		const y = this.scale.height - obstacle.height / 2 - this.settings.groundHeight;
+		obstacle.setPosition(x, y);
+		obstacle.setVelocityX(-this.settings.velocity);
+
+		return x;
+	}
+
+	private repositionObstacles() {
+		this.obstaclesGroup.children.iterate(
+			// @ts-expect-error(TODO: Need to find out how to fix this)
+			(obstacle: Phaser.Types.Physics.Arcade.SpriteWithStaticBody) => {
+				if (obstacle.x < 0 - obstacle.width / 2) {
+					this.positionObstacle(obstacle, this.findFurthestObstacle());
+					let newFrame = obstacles[Phaser.Math.Between(0, obstacles.length - 1)];
+					while (newFrame === obstacle.frame.name) {
+						newFrame = obstacles[Phaser.Math.Between(0, obstacles.length - 1)];
+					}
+					obstacle.setFrame(newFrame);
+				}
+			}
+		);
+	}
+
+	private repositionRewards() {
+		this.rewardGroup.children.iterate(
+			// @ts-expect-error(TODO: Need to find out how to fix this)
+			(reward: Phaser.Types.Physics.Arcade.SpriteWithStaticBody) => {
+				if (reward.x < 0 - reward.width / 2) {
+					this.positionReward(reward, this.findFurthestReward());
+				}
+			}
+		);
+	}
+
+	private findFurthestReward(): number {
+		let furthestX = 0;
+		this.rewardGroup.children.iterate(
+			// @ts-expect-error(TODO: Need to find out how to fix this)
+			(reward: Phaser.Types.Physics.Arcade.SpriteWithStaticBody) => {
+				if (reward.x > furthestX) {
+					furthestX = reward.x;
+				}
+			}
+		);
+		return furthestX;
+	}
+
+	private findFurthestObstacle(): number {
+		let furthestX = 0;
+		this.obstaclesGroup.children.iterate(
+			// @ts-expect-error(TODO: Need to find out how to fix this)
+			(obstacle: Phaser.Types.Physics.Arcade.SpriteWithStaticBody) => {
+				if (obstacle.x > furthestX) {
+					furthestX = obstacle.x;
+				}
+			}
+		);
+		return furthestX;
+	}
+
+	private collectReward(reward: Phaser.Types.Physics.Arcade.SpriteWithStaticBody) {
+		const bounds = reward.getBounds();
+		this.emitter.setPosition(bounds.left, bounds.top);
+		this.emitter.active = true;
+		this.emitter.explode();
+		this.health += this.settings.healthForReward;
+		if (this.health > this.settings.healthMax) {
+			this.health = this.settings.healthMax;
+		}
+	}
+
+	private punish() {
+		this.health += this.settings.healthForObstacle;
+		this.hurtTimeline.play();
+		if (this.health < 0) {
+			this.health = 0;
+			this.lose();
+		}
+	}
+
 	private performJump() {
 		if (this.hero.body.onFloor()) {
-			this.hero.setVelocityY(adjustForPixelRatio(-400));
+			this.hero.setVelocityY(-this.settings.jumpVelocity);
 		}
 	}
 

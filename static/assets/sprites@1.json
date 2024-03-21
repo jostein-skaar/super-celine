@@ -5,7 +5,7 @@
 			"format": "RGBA8888",
 			"size": {
 				"w": 122,
-				"h": 574
+				"h": 1024
 			},
 			"scale": 0.25,
 			"frames": [
@@ -56,20 +56,20 @@
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 50,
-						"h": 70
+						"w": 100,
+						"h": 140
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 50,
-						"h": 70
+						"w": 100,
+						"h": 140
 					},
 					"frame": {
 						"x": 1,
 						"y": 405,
-						"w": 50,
-						"h": 70
+						"w": 100,
+						"h": 140
 					}
 				},
 				{
@@ -77,20 +77,20 @@
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 50,
-						"h": 70
+						"w": 100,
+						"h": 140
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 50,
-						"h": 70
+						"w": 100,
+						"h": 140
 					},
 					"frame": {
-						"x": 53,
-						"y": 405,
-						"w": 50,
-						"h": 70
+						"x": 1,
+						"y": 547,
+						"w": 100,
+						"h": 140
 					}
 				},
 				{
@@ -98,20 +98,20 @@
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 50,
-						"h": 70
+						"w": 100,
+						"h": 140
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 50,
-						"h": 70
+						"w": 100,
+						"h": 140
 					},
 					"frame": {
 						"x": 1,
-						"y": 477,
-						"w": 50,
-						"h": 70
+						"y": 689,
+						"w": 100,
+						"h": 140
 					}
 				},
 				{
@@ -119,20 +119,41 @@
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 50,
-						"h": 70
+						"w": 100,
+						"h": 140
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 50,
-						"h": 70
+						"w": 100,
+						"h": 140
 					},
 					"frame": {
-						"x": 53,
-						"y": 477,
-						"w": 50,
-						"h": 70
+						"x": 1,
+						"y": 831,
+						"w": 100,
+						"h": 140
+					}
+				},
+				{
+					"filename": "rewards-001.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 40,
+						"h": 40
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 40,
+						"h": 40
+					},
+					"frame": {
+						"x": 1,
+						"y": 973,
+						"w": 40,
+						"h": 40
 					}
 				},
 				{
@@ -150,8 +171,8 @@
 						"h": 24
 					},
 					"frame": {
-						"x": 1,
-						"y": 549,
+						"x": 43,
+						"y": 973,
 						"w": 24,
 						"h": 24
 					}
@@ -171,8 +192,8 @@
 						"h": 24
 					},
 					"frame": {
-						"x": 27,
-						"y": 549,
+						"x": 69,
+						"y": 973,
 						"w": 24,
 						"h": 24
 					}
@@ -192,8 +213,8 @@
 						"h": 24
 					},
 					"frame": {
-						"x": 53,
-						"y": 549,
+						"x": 95,
+						"y": 973,
 						"w": 24,
 						"h": 24
 					}
@@ -213,8 +234,8 @@
 						"h": 24
 					},
 					"frame": {
-						"x": 79,
-						"y": 549,
+						"x": 43,
+						"y": 999,
 						"w": 24,
 						"h": 24
 					}
@@ -225,6 +246,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:7a1b9c9083e6dbaf55678b521b7cdf47:e40c7193f78a6bcb4e3ae3cf113252af:4a9bf2ba9afc2827dfa178a3fc41fa73$"
+		"smartupdate": "$TexturePacker:SmartUpdate:08540e0050f47bf299bc2a2f5057e14c:29a194799a3a8f4544c9d4fc629b3410:4a9bf2ba9afc2827dfa178a3fc41fa73$"
 	}
 }

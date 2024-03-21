@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
 	import { createGameConfig } from '$lib/game/config';
-	import { adjustForPixelRatio } from '@jostein-skaar/common-game';
+	import { adjustForPixelRatio, reloadWhenResize } from '@jostein-skaar/common-game';
 
 	let isDebug = true;
 	if (import.meta.env.PROD) {
@@ -22,6 +22,8 @@
 		width = Math.min(window.innerWidth, maxWantedWidth);
 	}
 
+	console.log('width', width, 'height', height, 'pixelRatio', window.devicePixelRatio);
+
 	const gameConfig = createGameConfig(
 		width,
 		height,
@@ -34,6 +36,8 @@
 	setTimeout(() => {
 		const phaserGame = new Phaser.Game(gameConfig);
 	});
+
+	reloadWhenResize(window);
 </script>
 
 <div class="game-container">
@@ -55,13 +59,14 @@
 		height: 100svh;
 	}
 	#game {
+		text-align: center;
 		max-width: 800px;
 		max-height: 600px;
-		/* background-color: green; */
 	}
 
 	@container game-container (min-width: 820px) and (min-height: 620px) {
 		#game {
+			align-items: center;
 			background-color: yellow;
 			box-sizing: content-box;
 			border: 10px dashed var(--secondary-color);
