@@ -1,0 +1,3 @@
+import{i as C,d as u}from"./scheduler.Dl1OXHgJ.js";function x(n){const t=n-1;return t*t*t+1}function _(n,{delay:t=0,duration:s=400,easing:o=C}={}){const e=+getComputedStyle(n).opacity;return{delay:t,duration:s,easing:o,css:a=>`opacity: ${a*e}`}}function S(n,{delay:t=0,duration:s=400,easing:o=x,x:e=0,y:a=0,opacity:p=0}={}){const r=getComputedStyle(n),c=+r.opacity,f=r.transform==="none"?"":r.transform,y=c*(1-p),[l,m]=u(e),[$,d]=u(a);return{delay:t,duration:s,easing:o,css:(i,g)=>`
+			transform: ${f} translate(${(1-i)*l}${m}, ${(1-i)*$}${d});
+			opacity: ${c-y*g}`}}const V=""+new URL("../assets/super-celine.CGyBHN3p.png",import.meta.url).href;export{_ as a,S as f,V as s};
