@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { fade, fly } from 'svelte/transition';
-	import superCelineImage from '$lib/images/super-celine.png';
+	import superCelineImage from '$lib/images/super-celine-happy.png';
 	import { onMount } from 'svelte';
 
 	let visible = false;

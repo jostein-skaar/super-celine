@@ -69,7 +69,7 @@
 			align-items: center;
 			background-color: yellow;
 			box-sizing: content-box;
-			border: 10px dashed var(--secondary-color);
+			border: 10px dashed var(--bg-color);
 		}
 	}
 </style>

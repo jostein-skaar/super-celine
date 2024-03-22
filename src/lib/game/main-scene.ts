@@ -133,10 +133,19 @@ export class MainScene extends Phaser.Scene {
 				{ key: 'sprites', frame: 'hero-001.png' },
 				{ key: 'sprites', frame: 'hero-002.png' }
 			],
-			frameRate: 8,
+			frameRate: 10,
 			repeat: -1
 		});
 		this.hero.anims.play('run', true);
+		this.hero.anims.create({
+			key: 'jump',
+			frames: [
+				{ key: 'sprites', frame: 'hero-003.png' },
+				{ key: 'sprites', frame: 'hero-004.png' }
+			],
+			frameRate: 2,
+			repeat: -1
+		});
 
 		this.hurtTimeline = this.add.timeline({
 			at: 0,
@@ -182,10 +191,6 @@ export class MainScene extends Phaser.Scene {
 				this.currentHitObstacle = obstacle;
 				this.punish();
 			}
-			// // eslint-disable-next-line @typescript-eslint/no-unused-vars
-			// (_hero, _reward) => {
-			// 	this.punish();
-			// }
 		);
 
 		this.emitter = this.add.particles(0, 0, 'sprites', {
@@ -215,6 +220,11 @@ export class MainScene extends Phaser.Scene {
 
 		if (this.isHeroBelowGround()) {
 			this.resetHeroPosition();
+		}
+		if (this.hero.body.onFloor()) {
+			this.hero.anims.play('run', true);
+		} else {
+			this.hero.anims.play('jump', true);
 		}
 	}
 
