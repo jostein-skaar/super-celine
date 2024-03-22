@@ -26,6 +26,7 @@ export class MainScene extends Phaser.Scene {
 		healthMax: 3000,
 		healthForReward: 500,
 		healthForObstacle: -1000,
+		healthPerUpdate: 4,
 		groundHeight: adjustForPixelRatio(50),
 		heroGravity: adjustForPixelRatio(550),
 		jumpVelocity: adjustForPixelRatio(600),
@@ -38,6 +39,7 @@ export class MainScene extends Phaser.Scene {
 	velocity = this.settings.velocity;
 	timeSinceStart = 0;
 	score = 0;
+	hasLost = false;
 
 	constructor() {
 		super('main-scene');
@@ -91,10 +93,10 @@ export class MainScene extends Phaser.Scene {
 			.text(
 				this.scale.width / 2 - (healthBarContainer.width - healthBarContainer.lineWidth) / 2,
 				adjustForPixelRatio(50),
-				'time: 0',
+				'score: 0',
 				{
 					fontSize: adjustForPixelRatio(24) + 'px',
-					color: '#000'
+					color: '#fff'
 				}
 			)
 			.setDepth(1);
@@ -219,13 +221,10 @@ export class MainScene extends Phaser.Scene {
 
 	update(_time: number, delta: number): void {
 		this.timeSinceStart += delta;
-		this.rewardGroup.setVelocityX(-this.velocity);
-		this.obstaclesGroup.setVelocityX(-this.velocity);
 		this.repositionObstacles();
 		this.repositionRewards();
-		const losingHealth = 2;
 
-		this.health -= losingHealth;
+		this.health -= this.settings.healthPerUpdate;
 		this.drawHealthBar();
 
 		if (this.health <= 0) {
@@ -242,7 +241,7 @@ export class MainScene extends Phaser.Scene {
 		}
 
 		this.score = this.timeSinceStart / 1000;
-		this.scoreText.setText(`time: ${this.score.toFixed(2)}`);
+		this.scoreText.setText(`score: ${this.score.toFixed(2)}`);
 	}
 
 	private drawHealthBar() {
@@ -274,7 +273,6 @@ export class MainScene extends Phaser.Scene {
 			adjustForPixelRatio(100),
 			this.scale.height - reward.height / 2 - this.settings.groundHeight - adjustForPixelRatio(100)
 		);
-		// reward.enableBody(true, x, y, true, true);
 		reward.setPosition(x, y);
 		reward.setVelocityX(-this.velocity);
 
@@ -389,6 +387,15 @@ export class MainScene extends Phaser.Scene {
 	}
 
 	private lose() {
-		window.location.href = '/lose?time=' + this.score.toFixed(2);
+		if (this.hasLost) {
+			return;
+		}
+		this.hasLost = true;
+		this.scene.pause();
+		this.cameras.main.setBackgroundColor(0xbababa);
+		this.cameras.main.setAlpha(0.5);
+		setTimeout(() => {
+			window.location.href = '/lose?score=' + this.score.toFixed(2);
+		}, 1200);
 	}
 }

@@ -15,10 +15,45 @@ body {
 	font-style: normal;
 }
 
-a {
-	color: var(--text-color);
-}
-
 canvas {
 	margin: 0 auto;
+}
+
+header {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	flex-direction: column;
+	max-width: 500px;
+	margin: 0 auto;
+	text-align: center;
+	text-wrap: balance;
+	padding: 1rem;
+}
+
+h1 {
+	font-size: 1.4rem;
+}
+p {
+	font-size: 0.8rem;
+}
+
+img {
+	height: clamp(100px, 35vh, 350px);
+}
+
+a {
+	display: block;
+	font-size: 1rem;
+	margin-top: 1rem;
+	padding: 0.5rem;
+	text-decoration: none;
+	border-radius: 5px;
+	background-color: var(--secondary-color);
+	transition: filter 0.3s ease;
+	width: 100%;
+	color: var(--text-color);
+}
+a:hover {
+	filter: brightness(1.2);
 }

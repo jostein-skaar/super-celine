@@ -6,6 +6,7 @@
 	if (import.meta.env.PROD) {
 		isDebug = false;
 	}
+	isDebug = false;
 
 	let scaleModePhaser = Phaser.Scale.ScaleModes.NONE;
 
@@ -45,9 +46,11 @@
 </div>
 
 <style>
-	:global(body) {
-		background-color: #cccaca;
-	}
+	@media only screen and (max-width: 600px){  
+		:global(body) {
+			background-color: #828282;
+		}
+	}	
 
 	.game-container {
 		container-type: size;
@@ -64,7 +67,7 @@
 		max-height: 600px;
 	}
 
-	@container game-container (min-width: 820px) and (min-height: 620px) {
+	@container game-container (min-width: 820px) and (min-height: 620px) {			
 		#game {
 			align-items: center;
 			background-color: yellow;
