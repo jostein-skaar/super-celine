@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "particle-snowflake-001.png",
+					"filename": "particle-heart-001.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "particle-snowflake-002.png",
+					"filename": "particle-heart-002.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "particle-snowflake-003.png",
+					"filename": "particle-snowflake-001.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "particle-star-001.png",
+					"filename": "particle-snowflake-002.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -281,6 +281,48 @@
 						"w": 24,
 						"h": 24
 					}
+				},
+				{
+					"filename": "particle-snowflake-003.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 24,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 24,
+						"h": 24
+					},
+					"frame": {
+						"x": 205,
+						"y": 505,
+						"w": 24,
+						"h": 24
+					}
+				},
+				{
+					"filename": "particle-star-001.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 24,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 24,
+						"h": 24
+					},
+					"frame": {
+						"x": 203,
+						"y": 585,
+						"w": 24,
+						"h": 24
+					}
 				}
 			]
 		}
@@ -288,6 +330,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:05ff55397ac7c26de4b67648c46bec23:8253f4a7320ed90d1a01440e080e6dab:4a9bf2ba9afc2827dfa178a3fc41fa73$"
+		"smartupdate": "$TexturePacker:SmartUpdate:1d861825ab1ee0f7b3acb045074fb5f4:a13aac36b466165b3be02344d9cd892a:4a9bf2ba9afc2827dfa178a3fc41fa73$"
 	}
 }
