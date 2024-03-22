@@ -20,6 +20,7 @@ export class MainScene extends Phaser.Scene {
 	obstaclesGroup!: Phaser.Physics.Arcade.Group;
 	emitter!: GameObjects.Particles.ParticleEmitter;
 	currentHitObstacle?: Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
+	scoreText!: GameObjects.Text;
 
 	settings = {
 		healthMax: 3000,
@@ -36,6 +37,7 @@ export class MainScene extends Phaser.Scene {
 	health = this.settings.healthMax;
 	velocity = this.settings.velocity;
 	timeSinceStart = 0;
+	score = 0;
 
 	constructor() {
 		super('main-scene');
@@ -84,6 +86,18 @@ export class MainScene extends Phaser.Scene {
 			})
 			.setDepth(1)
 			.setOrigin(0.5, 0);
+
+		this.scoreText = this.add
+			.text(
+				this.scale.width / 2 - (healthBarContainer.width - healthBarContainer.lineWidth) / 2,
+				adjustForPixelRatio(50),
+				'time: 0',
+				{
+					fontSize: adjustForPixelRatio(24) + 'px',
+					color: '#000'
+				}
+			)
+			.setDepth(1);
 
 		this.cursors = this.input.keyboard!.createCursorKeys();
 		this.cursors.space.onDown = () => {
@@ -226,6 +240,9 @@ export class MainScene extends Phaser.Scene {
 		} else {
 			this.hero.anims.play('jump', true);
 		}
+
+		this.score = this.timeSinceStart / 1000;
+		this.scoreText.setText(`time: ${this.score.toFixed(2)}`);
 	}
 
 	private drawHealthBar() {
@@ -372,6 +389,6 @@ export class MainScene extends Phaser.Scene {
 	}
 
 	private lose() {
-		window.location.href = '/lose';
+		window.location.href = '/lose?time=' + this.score.toFixed(2);
 	}
 }
