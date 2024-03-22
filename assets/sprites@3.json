@@ -4,7 +4,7 @@
 			"image": "sprites@3.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1016,
+				"w": 1448,
 				"h": 1024
 			},
 			"scale": 0.75,
@@ -115,6 +115,27 @@
 					}
 				},
 				{
+					"filename": "hero-003.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 360,
+						"h": 600
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 360,
+						"h": 586
+					},
+					"frame": {
+						"x": 725,
+						"y": 1,
+						"w": 360,
+						"h": 586
+					}
+				},
+				{
 					"filename": "obstacles-004.png",
 					"rotated": false,
 					"trimmed": true,
@@ -129,10 +150,31 @@
 						"h": 420
 					},
 					"frame": {
-						"x": 725,
-						"y": 1,
+						"x": 907,
+						"y": 589,
 						"w": 290,
 						"h": 420
+					}
+				},
+				{
+					"filename": "hero-004.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 360,
+						"h": 600
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 360,
+						"h": 586
+					},
+					"frame": {
+						"x": 1087,
+						"y": 1,
+						"w": 360,
+						"h": 586
 					}
 				},
 				{
@@ -150,8 +192,8 @@
 						"h": 120
 					},
 					"frame": {
-						"x": 725,
-						"y": 423,
+						"x": 1199,
+						"y": 589,
 						"w": 120,
 						"h": 120
 					}
@@ -171,8 +213,8 @@
 						"h": 72
 					},
 					"frame": {
-						"x": 847,
-						"y": 423,
+						"x": 1199,
+						"y": 711,
 						"w": 72,
 						"h": 72
 					}
@@ -192,8 +234,8 @@
 						"h": 72
 					},
 					"frame": {
-						"x": 847,
-						"y": 497,
+						"x": 1199,
+						"y": 785,
 						"w": 72,
 						"h": 72
 					}
@@ -213,8 +255,8 @@
 						"h": 72
 					},
 					"frame": {
-						"x": 907,
-						"y": 571,
+						"x": 1199,
+						"y": 859,
 						"w": 72,
 						"h": 72
 					}
@@ -234,8 +276,8 @@
 						"h": 72
 					},
 					"frame": {
-						"x": 921,
-						"y": 423,
+						"x": 1199,
+						"y": 933,
 						"w": 72,
 						"h": 72
 					}
@@ -246,6 +288,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:59e2a6ac7b5133052ab701ad6ad8c978:1a94f303e398f8423d181f0cdd58e8d1:4a9bf2ba9afc2827dfa178a3fc41fa73$"
+		"smartupdate": "$TexturePacker:SmartUpdate:05ff55397ac7c26de4b67648c46bec23:8253f4a7320ed90d1a01440e080e6dab:4a9bf2ba9afc2827dfa178a3fc41fa73$"
 	}
 }
