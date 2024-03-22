@@ -195,7 +195,7 @@ export class MainScene extends Phaser.Scene {
 
 		this.emitter = this.add.particles(0, 0, 'sprites', {
 			frame: 'particle-star-001.png',
-			scale: { start: 1, end: 0 },
+			scale: { start: 1.5, end: 0.5 },
 			speed: { min: 10, max: 100 },
 			lifespan: 800,
 			quantity: 20,

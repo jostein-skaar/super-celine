@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { fade, fly } from 'svelte/transition';
 	import superCelineImage from '$lib/images/super-celine-sad.png';
 	import { onMount } from 'svelte';
 
@@ -11,15 +10,9 @@
 
 {#if visible}
 	<header>
-		<h1 transition:fly={{ y: -40, duration: 2000 }}>So sad</h1>
-		<p transition:fade={{ duration: 1000, delay: 200 }}>
-			Perhaps you should hang out with us more often?
-		</p>
-		<img
-			transition:fade={{ duration: 1000 }}
-			src={superCelineImage}
-			alt="Drawing of Super Celine"
-		/>
+		<h1>So sad</h1>
+		<p>Perhaps you should hang out with us more often?</p>
+		<img src={superCelineImage} alt="Drawing of Super Celine" />
 		<a href="/game">Try Again</a>
 	</header>
 {/if}
